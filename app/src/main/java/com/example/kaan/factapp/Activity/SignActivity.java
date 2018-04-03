@@ -1,13 +1,15 @@
-package com.example.kaan.factapp;
+package com.example.kaan.factapp.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class WelcomeActivity extends AppCompatActivity {
+import com.example.kaan.factapp.R;
+
+public class SignActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome);
+        setContentView(R.layout.activity_sign);
     }
 }

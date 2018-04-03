@@ -1,3 +1,40 @@
 <resources>
     <string name="app_name">FactApp</string>
+    <string name="welcome">Hoşgeldiniz</string>
+    <string name="slogan">Ev Araba Slogan</string>
+    <string name="createNewAccount">Hesap Oluştur</string>
+    <string name="loginAccount">Oturum Aç</string>
+
+    <string name="mail">E-Posta</string>
+    <string name="password">Parola Seç</string>
+    <string name="name">Adınız</string>
+    <string name="lastName">Soyadınız</string>
+    <string name="phone">Telefon Numarası</string>
+    <string name="birthDate">Doğum Tarihi</string>
+    <string name="gender">Cinsiyet</string>
+
+    <string name="userName">KAAN KÜN</string>
+    <string name="shareIncident">Olay Paylaş</string>
+    <string name="reportIncident">Bildirdiğim Olaylar</string>
+    <string name="nearIncident">Bana Yakın Olaylar</string>
+    <string name="allIncident">Tüm Olaylar</string>
+    <string name="logout">Çıkış Yap</string>
+
+    <string name="roadWork">Yol Çalışması</string>
+    <string name="accident">Kaza</string>
+    <string name="robbery">Hırsızlık</string>
+    <string name="murder">Cinayet</string>
+
+
+
+
+    <string name="title_activity_choosing">ChoosingActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+
 </resources>
