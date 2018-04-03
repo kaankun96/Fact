@@ -36,5 +36,11 @@
     <string name="incident_share">Olayı Paylaş</string>
 
 
+    <string name="incidentName">Olay Adı : </string>
+    <string name="incidentLocation">Olay Yeri : </string>
+    <string name="incidentInformer">Bildiren Kişi : </string>
+    <string name="incidentDate">Tarih &amp; Saat : </string>
+
+
 
 </resources>
