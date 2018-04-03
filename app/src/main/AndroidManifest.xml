@@ -22,7 +22,8 @@
         <activity
             android:name=".Activity.ChoosingActivity"
             android:label="@string/title_activity_choosing"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Activity.ShareActivity"></activity>
     </application>
 
 </manifest>
