@@ -3,6 +3,8 @@ package com.example.kaan.factapp.Helper;
 import android.content.Context;
 import android.content.Intent;
 
+import com.example.kaan.factapp.Activity.LoginActivity;
+import com.example.kaan.factapp.Activity.SignActivity;
 import com.example.kaan.factapp.Activity.WelcomeActivity;
 
 public class NavigationHelper {
@@ -22,6 +24,14 @@ public class NavigationHelper {
 
     public void startWelcomeActivityDirect(Context context) {
         Intent intent = new Intent(context, WelcomeActivity.class);
+        startActivity(context, intent);
+    }
+    public void startWelcomeToSignActivityDirect(Context context) {
+        Intent intent = new Intent(context, SignActivity.class);
+        startActivity(context, intent);
+    }
+    public void startWelcomeToLoginActivityDirect(Context context) {
+        Intent intent = new Intent(context, LoginActivity.class);
         startActivity(context, intent);
     }
 

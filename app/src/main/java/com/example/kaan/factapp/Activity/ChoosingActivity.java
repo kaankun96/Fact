@@ -11,7 +11,8 @@ import com.example.kaan.factapp.databinding.ToolbarBinding;
 
 public class ChoosingActivity extends BaseActivity {
 
-   private ActivityChoosingBinding  binding;
+    private ActivityChoosingBinding binding;
+
     @Override
     protected void onCreateFinished(Bundle savedInstanceState) {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_choosing);

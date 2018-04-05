@@ -1,71 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorBlack"
-    tools:context="com.example.kaan.factapp.Activity.WelcomeActivity"
-    android:orientation="vertical">
-
-    <RelativeLayout
+<layout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp">
+        android:layout_height="match_parent"
+        android:background="@color/colorBlack"
+        android:orientation="vertical"
+        tools:context="com.example.kaan.factapp.Activity.WelcomeActivity">
 
-        <ImageView
-            android:id="@+id/ivIconWelcome"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_centerInParent="true"
-            android:src="@drawable/logo" />
-    </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp">
 
-    <TextView
-        android:id="@+id/tvWelcome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorWhite"
-        android:layout_marginTop="50dp"
-        android:text="@string/welcome"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:gravity="center"/>
+            <ImageView
+                android:id="@+id/ivIconWelcome"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/logo" />
+        </RelativeLayout>
 
-    <TextView
-        android:id="@+id/tvSlogan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorWhite"
-        android:layout_marginTop="20dp"
-        android:text="@string/slogan"
-        android:textSize="25dp"
-        android:textStyle="italic"
-        android:gravity="center"/>
+        <TextView
+            android:id="@+id/tvWelcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:text="@string/welcome"
+            android:textColor="@color/colorWhite"
+            android:textSize="25dp"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnCreateAccount"
-        android:layout_width="313dp"
-        android:layout_height="39dp"
-        android:background="@drawable/green_white_button"
-        android:gravity="center"
-        android:layout_marginTop="105dp"
-        android:layout_gravity="center"
-        android:textColor="@color/colorWhite"
-        android:textStyle="bold"
-        android:text="@string/createNewAccount"/>
+        <TextView
+            android:id="@+id/tvSlogan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/slogan"
+            android:textColor="@color/colorWhite"
+            android:textSize="25dp"
+            android:textStyle="italic" />
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="313dp"
-        android:layout_height="39dp"
-        android:background="@drawable/white_black_button"
-        android:gravity="center"
-        android:layout_marginTop="25dp"
-        android:layout_gravity="center"
-        android:textColor="@color/colorBlack"
-        android:textStyle="bold"
-        android:text="@string/loginAccount"/>
+        <Button
+            android:id="@+id/btnCreateAccount"
+            android:layout_width="313dp"
+            android:layout_height="39dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="105dp"
+            android:background="@drawable/green_white_button"
+            android:gravity="center"
+            android:text="@string/createNewAccount"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="313dp"
+            android:layout_height="39dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/white_black_button"
+            android:gravity="center"
+            android:text="@string/loginAccount"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold" />
 
 
-</LinearLayout>
+    </LinearLayout>
+</layout>
