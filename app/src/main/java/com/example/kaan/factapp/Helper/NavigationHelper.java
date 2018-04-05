@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.example.kaan.factapp.Activity.LoginActivity;
+import com.example.kaan.factapp.Activity.ShareActivity;
 import com.example.kaan.factapp.Activity.SignActivity;
 import com.example.kaan.factapp.Activity.WelcomeActivity;
 
@@ -32,6 +33,10 @@ public class NavigationHelper {
     }
     public void startWelcomeToLoginActivityDirect(Context context) {
         Intent intent = new Intent(context, LoginActivity.class);
+        startActivity(context, intent);
+    }
+    public void startChoosingToShareActivityDirect(Context context){
+        Intent intent = new Intent(context, ShareActivity.class);
         startActivity(context, intent);
     }
 
