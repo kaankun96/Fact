@@ -2,7 +2,9 @@ package com.example.kaan.factapp.Helper;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
+import com.example.kaan.factapp.Activity.ChoosingActivity;
 import com.example.kaan.factapp.Activity.LoginActivity;
 import com.example.kaan.factapp.Activity.ShareActivity;
 import com.example.kaan.factapp.Activity.SignActivity;
@@ -39,5 +41,8 @@ public class NavigationHelper {
         Intent intent = new Intent(context, ShareActivity.class);
         startActivity(context, intent);
     }
-
+    public void startSignToLoginActivityDirect(Context context) {
+        Intent intent = new Intent(context, LoginActivity.class);
+        startActivity(context, intent);
+    }
 }

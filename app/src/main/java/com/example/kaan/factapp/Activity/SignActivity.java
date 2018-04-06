@@ -9,6 +9,11 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
+import com.example.kaan.factapp.Connection.RegisterFactory;
+import com.example.kaan.factapp.Connection.RestControllerFactory;
+import com.example.kaan.factapp.Helper.NavigationHelper;
+import com.example.kaan.factapp.Model.Request.RegisterRequest;
+import com.example.kaan.factapp.Model.Response.RegisterResponse;
 import com.example.kaan.factapp.R;
 import com.example.kaan.factapp.databinding.ActivitySignBinding;
 import com.example.kaan.factapp.databinding.ToolbarBinding;
@@ -17,12 +22,18 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class SignActivity extends BaseActivity implements View.OnClickListener {
 
     private ActivitySignBinding binding;
     final Calendar myCalendar = Calendar.getInstance();
     DatePickerDialog.OnDateSetListener date;
+    private RegisterRequest registerRequest=new RegisterRequest();
+    private String email, password, name, lastName, phone, birthDate, gender;
 
     @Override
     protected void onCreateFinished(Bundle savedInstanceState) {
@@ -81,49 +92,49 @@ public class SignActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnCreateAccountWelcome:
-
+                signToDatabase();
                 break;
 
         }
     }
 
-    public void signToFirebase() {
-        String email = binding.etMail.getText().toString();
-        String password = binding.etPassword.getText().toString();
-        String name = binding.etName.getText().toString();
-        String lastName = binding.etLastName.getText().toString();
-        String phone = binding.etPhone.getText().toString();
-        String birthDate = binding.etBirthDate.getText().toString();
-        String gender = binding.etGender.getText().toString();
+    public void signToDatabase() {
 
-        if (TextUtils.isEmpty(email)) {
-            Toast.makeText(getApplicationContext(), "Lütfen Mailinizi Giriniz", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (TextUtils.isEmpty(password)) {
-            Toast.makeText(getApplicationContext(), "Lütfen  Parolanızı Giriniz", Toast.LENGTH_SHORT).show();
-        }
-        if (password.length() < 6) {
-            Toast.makeText(getApplicationContext(), "Lütfen  Parolanızı 6 Haneli Giriniz", Toast.LENGTH_SHORT).show();
-        }
-        if (TextUtils.isEmpty(name)) {
-            Toast.makeText(getApplicationContext(), "Lütfen  İsminizi Giriniz", Toast.LENGTH_SHORT).show();
-        }
-        if (TextUtils.isEmpty(lastName)) {
-            Toast.makeText(getApplicationContext(), "Lütfen  Soyisminizi Giriniz", Toast.LENGTH_SHORT).show();
-        }
-        if (TextUtils.isEmpty(phone)) {
-            Toast.makeText(getApplicationContext(), "Lütfen  Telefon Numaranızı Giriniz", Toast.LENGTH_SHORT).show();
-        }
-        if (phone.length() < 11 || phone.length() > 11) {
-            Toast.makeText(getApplicationContext(), "Lütfen  Telefon Numaranızı Doğru Giriniz", Toast.LENGTH_SHORT).show();
-        }
-        if (TextUtils.isEmpty(birthDate)) {
-            Toast.makeText(getApplicationContext(), "Lütfen  Doğum Tarihinizi Giriniz", Toast.LENGTH_SHORT).show();
-        }
-        if (TextUtils.isEmpty(gender)) {
-            Toast.makeText(getApplicationContext(), "Lütfen  Cinsiyetinizi Giriniz", Toast.LENGTH_SHORT).show();
-        }
+
+        email = binding.etMail.getText().toString();
+        password = binding.etPassword.getText().toString();
+        name = binding.etName.getText().toString();
+        lastName = binding.etLastName.getText().toString();
+        phone = binding.etPhone.getText().toString();
+        birthDate = binding.etBirthDate.getText().toString();
+        gender = binding.etGender.getText().toString();
+
+        registerRequest.setEmail(email);
+        registerRequest.setPassword(password);
+        registerRequest.setName(name);
+        registerRequest.setLastName(lastName);
+        registerRequest.setPhone(phone);
+        registerRequest.setBirthDate(birthDate);
+        registerRequest.setGender(gender);
+
+        RestControllerFactory.getInstance().getRegisterFactory().register(registerRequest).enqueue(new Callback<RegisterResponse>() {
+            @Override
+            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
+                switch (response.code()) {
+                    case 200:
+
+                        NavigationHelper.getInstance().startSignToLoginActivityDirect(SignActivity.this);
+                        Toast.makeText(SignActivity.this, response.message().toString(), Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RegisterResponse> call, Throwable t) {
+                Toast.makeText(SignActivity.this,"Hata",Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
     }
 }
