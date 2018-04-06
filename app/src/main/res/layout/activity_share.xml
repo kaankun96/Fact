@@ -41,6 +41,7 @@
                 android:id="@+id/ivAddPhoto1"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
+                android:scaleType="fitXY"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="25dp"
                 android:background="@drawable/ic_white_photo" />
@@ -49,6 +50,7 @@
                 android:id="@+id/ivAddPhoto2"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
+                android:scaleType="fitXY"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="25dp"
                 android:background="@drawable/ic_white_photo" />
@@ -59,6 +61,7 @@
             android:id="@+id/ivAddPhoto3"
             android:layout_width="250dp"
             android:layout_height="150dp"
+            android:scaleType="fitXY"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:background="@drawable/ic_white_photo" />

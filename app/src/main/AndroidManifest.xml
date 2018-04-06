@@ -3,6 +3,9 @@
     package="com.example.kaan.factapp">
 
     <uses-permission android:name="android. permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.SplashActivity">
+        <activity android:name=".Activity.ShareActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +27,7 @@
             android:name=".Activity.ChoosingActivity"
             android:label="@string/title_activity_choosing"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Activity.ShareActivity"></activity>
+        <activity android:name=".Activity.SplashActivity"></activity>
     </application>
 
 </manifest>
