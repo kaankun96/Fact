@@ -45,4 +45,8 @@ public class NavigationHelper {
         Intent intent = new Intent(context, LoginActivity.class);
         startActivity(context, intent);
     }
+    public void startLoginToChoosingActivityDirect(Context context) {
+        Intent intent = new Intent(context, ChoosingActivity.class);
+        startActivity(context, intent);
+    }
 }

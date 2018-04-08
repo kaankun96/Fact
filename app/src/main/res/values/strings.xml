@@ -41,6 +41,8 @@
     <string name="incidentInformer">Bildiren Kişi : </string>
     <string name="incidentDate">Tarih &amp; Saat : </string>
 
+    <string name="prefFile">com.example.kaan.factapp.preference_file</string>
+    <string name="prefStatus">com.example.kaan.factapp.preference_login + status</string>
 
 
 </resources>

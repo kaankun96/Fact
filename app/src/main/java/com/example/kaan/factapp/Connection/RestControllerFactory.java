@@ -1,6 +1,8 @@
 package com.example.kaan.factapp.Connection;
 
 import com.example.kaan.factapp.BuildConfig;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.concurrent.TimeUnit;
 
@@ -11,10 +13,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RestControllerFactory {
 
+    public static final String BASE_URL = "http://10.0.2.2:8080/factApp/";
     private static RestControllerFactory instance = new RestControllerFactory();
     private static final int timeoutInterval = 30;
-
-    private static Retrofit apiService = null;
+    private static Retrofit factAppService = null;
 
     public static RestControllerFactory getInstance() {
         if (instance == null)
@@ -25,26 +27,23 @@ public class RestControllerFactory {
     private RegisterFactory registerFactory;
 
     private RestControllerFactory() {
-        if (apiService == null) {
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+        if (factAppService == null) {
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-            if (BuildConfig.DEBUG_MODE) {
-                logging.setLevel(HttpLoggingInterceptor.Level.BODY);
-            } else {
-                logging.setLevel(HttpLoggingInterceptor.Level.NONE);
-            }
+            logging.setLevel(HttpLoggingInterceptor.Level.BODY);
             OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
             httpClient.addInterceptor(logging);
-            // Baglanti süreleri icin yazildi
             httpClient.connectTimeout(timeoutInterval, TimeUnit.SECONDS);
             httpClient.readTimeout(timeoutInterval, TimeUnit.SECONDS);
-            apiService = new Retrofit.Builder()
-                    .baseUrl(BuildConfig.API_ADDRESS)
+            factAppService = new Retrofit.Builder()
+                    .baseUrl(BASE_URL)
                     .client(httpClient.build())
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(gson))
                     .build();
         }
-        registerFactory = apiService.create(RegisterFactory.class);
-
+        registerFactory = factAppService.create(RegisterFactory.class);
     }
 
     public RegisterFactory getRegisterFactory() {

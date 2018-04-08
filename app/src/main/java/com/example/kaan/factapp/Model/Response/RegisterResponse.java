@@ -1,16 +1,12 @@
 package com.example.kaan.factapp.Model.Response;
 
+import com.google.gson.annotations.SerializedName;
+
 public class RegisterResponse {
+    @SerializedName("status")
     private int status;
+    @SerializedName("message")
     private String message;
-
-    public RegisterResponse() {
-    }
-
-    public RegisterResponse(int status, String message) {
-        this.status = status;
-        this.message = message;
-    }
 
     public int getStatus() {
         return status;

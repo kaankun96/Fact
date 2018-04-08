@@ -4,15 +4,13 @@ package com.example.kaan.factapp.Activity;
 import android.app.DatePickerDialog;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
-import com.example.kaan.factapp.Connection.RegisterFactory;
 import com.example.kaan.factapp.Connection.RestControllerFactory;
 import com.example.kaan.factapp.Helper.NavigationHelper;
-import com.example.kaan.factapp.Model.Request.RegisterRequest;
 import com.example.kaan.factapp.Model.Response.RegisterResponse;
 import com.example.kaan.factapp.R;
 import com.example.kaan.factapp.databinding.ActivitySignBinding;
@@ -32,7 +30,6 @@ public class SignActivity extends BaseActivity implements View.OnClickListener {
     private ActivitySignBinding binding;
     final Calendar myCalendar = Calendar.getInstance();
     DatePickerDialog.OnDateSetListener date;
-    private RegisterRequest registerRequest=new RegisterRequest();
     private String email, password, name, lastName, phone, birthDate, gender;
 
     @Override
@@ -109,31 +106,29 @@ public class SignActivity extends BaseActivity implements View.OnClickListener {
         birthDate = binding.etBirthDate.getText().toString();
         gender = binding.etGender.getText().toString();
 
-        registerRequest.setEmail(email);
-        registerRequest.setPassword(password);
-        registerRequest.setName(name);
-        registerRequest.setLastName(lastName);
-        registerRequest.setPhone(phone);
-        registerRequest.setBirthDate(birthDate);
-        registerRequest.setGender(gender);
 
-        RestControllerFactory.getInstance().getRegisterFactory().register(registerRequest).enqueue(new Callback<RegisterResponse>() {
-            @Override
-            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
-                switch (response.code()) {
-                    case 200:
+        RestControllerFactory.getInstance().getRegisterFactory().registerAPI(email, password, name, lastName, phone, birthDate, gender).enqueue
+                (new Callback<RegisterResponse>() {
+                    @Override
+                    public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
 
-                        NavigationHelper.getInstance().startSignToLoginActivityDirect(SignActivity.this);
-                        Toast.makeText(SignActivity.this, response.message().toString(), Toast.LENGTH_SHORT).show();
-                        break;
-                }
-            }
+                        if (response.isSuccessful()) {
+                            if (response.body().getStatus() == 200) {
+                                Toast.makeText(SignActivity.this,response.body().getMessage(),Toast.LENGTH_LONG).show();
+                                NavigationHelper.getInstance().startSignToLoginActivityDirect(SignActivity.this);
 
-            @Override
-            public void onFailure(Call<RegisterResponse> call, Throwable t) {
-                Toast.makeText(SignActivity.this,"Hata",Toast.LENGTH_SHORT).show();
-            }
-        });
+                            }
+                        } else {
+                            Toast.makeText(SignActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<RegisterResponse> call, Throwable t) {
+                        Toast.makeText(SignActivity.this, "Bağlantı Hatası veya Var Olan Email Girişi", Toast.LENGTH_SHORT).show();
+                        Log.e("", t.toString());
+                    }
+                });
 
 
     }
