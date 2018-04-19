@@ -20,11 +20,13 @@ public class TotalEventAdapter extends RecyclerView.Adapter<TotalEventAdapter.Vi
 
     private LayoutInflater layoutInflater;
     private ArrayList<TotalEventModel> totalEventModels;
+    private String locationEqusals;
 
     public TotalEventAdapter(Context context, ArrayList<TotalEventModel> totalEventModels) {
         this.layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.totalEventModels = totalEventModels;
     }
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -35,7 +37,6 @@ public class TotalEventAdapter extends RecyclerView.Adapter<TotalEventAdapter.Vi
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final TotalEventModel totalEventModel = totalEventModels.get(position);
-
         holder.tvIncidentName.setText(totalEventModel.getName());
         holder.tvIncidentLocation.setText(totalEventModel.getLocation());
         holder.tvIncidentInformers.setText(totalEventModel.getUserName()+" "+totalEventModel.getUserLastName());

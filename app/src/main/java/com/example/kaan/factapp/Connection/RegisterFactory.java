@@ -1,6 +1,7 @@
 package com.example.kaan.factapp.Connection;
 
 
+import com.example.kaan.factapp.Model.LocationModel;
 import com.example.kaan.factapp.Model.Request.IncidentAllModel;
 import com.example.kaan.factapp.Model.Request.LoginRequest;
 import com.example.kaan.factapp.Model.Request.UploadRequest;
@@ -59,4 +60,7 @@ public interface RegisterFactory {
 
     @POST("myList.php")
     Call<ArrayList<TotalEventModel>> myListAPI(@Body IncidentAllModel incidentAllModel);
+
+    @POST("closeList.php")
+    Call<ArrayList<TotalEventModel>> closeListAPI(@Body LocationModel locationModel);
 }

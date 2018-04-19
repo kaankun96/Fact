@@ -43,6 +43,7 @@
 
     <string name="prefFile">com.example.kaan.factapp.preference_file</string>
     <string name="prefStatus">com.example.kaan.factapp.preference_login + status</string>
+    <string name="title_activity_maps">Map</string>
 
 
 </resources>
