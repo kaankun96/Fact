@@ -1,17 +1,15 @@
-package com.example.kaan.factapp.Model;
+package com.example.kaan.factapp.Model.Request;
 
 import com.google.gson.annotations.SerializedName;
 
-public class TotalEventModel {
-    @SerializedName("id")
-    private int id;
+public class UploadRequest {
     @SerializedName("dateTimes")
     private String dateTimes;
-    @SerializedName("url")
+    @SerializedName("image")
     private String url;
-    @SerializedName("url2")
+    @SerializedName("image2")
     private String url2;
-    @SerializedName("url3")
+    @SerializedName("image3")
     private String url3;
     @SerializedName("name")
     private String name;
@@ -26,15 +24,7 @@ public class TotalEventModel {
     @SerializedName("resultIncident")
     private String resultIncident;
 
-    public TotalEventModel() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public UploadRequest() {
     }
 
     public String getDateTimes() {

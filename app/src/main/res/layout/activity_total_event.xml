@@ -17,18 +17,21 @@
             android:layout_height="wrap_content" />
 
 
-        <include
-            android:id="@+id/prototype_report_row"
-            layout="@layout/prototype_all_row"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvReportAll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/tvInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/toolbar" />
-
-        <ListView
-            android:id="@+id/lvTotalEventList"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></ListView>
-
+            android:layout_marginTop="30dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:visibility="gone"
+            android:text="Kayıt bulunamadı"/>
     </LinearLayout>
 
 

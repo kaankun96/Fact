@@ -106,7 +106,7 @@ public class SignActivity extends BaseActivity implements View.OnClickListener {
         birthDate = binding.etBirthDate.getText().toString();
         gender = binding.etGender.getText().toString();
 
-
+        showLoadingIndicator();
         RestControllerFactory.getInstance().getRegisterFactory().registerAPI(email, password, name, lastName, phone, birthDate, gender).enqueue
                 (new Callback<RegisterResponse>() {
                     @Override
@@ -114,8 +114,9 @@ public class SignActivity extends BaseActivity implements View.OnClickListener {
 
                         if (response.isSuccessful()) {
                             if (response.body().getStatus() == 200) {
+                                hideLoadingIndicator();
                                 Toast.makeText(SignActivity.this,response.body().getMessage(),Toast.LENGTH_LONG).show();
-                                NavigationHelper.getInstance().startSignToLoginActivityDirect(SignActivity.this);
+                                NavigationHelper.getInstance().startLoginActivityDirect(SignActivity.this);
 
                             }
                         } else {
@@ -125,6 +126,7 @@ public class SignActivity extends BaseActivity implements View.OnClickListener {
 
                     @Override
                     public void onFailure(Call<RegisterResponse> call, Throwable t) {
+                        hideLoadingIndicator();
                         Toast.makeText(SignActivity.this, "Bağlantı Hatası veya Var Olan Email Girişi", Toast.LENGTH_SHORT).show();
                         Log.e("", t.toString());
                     }

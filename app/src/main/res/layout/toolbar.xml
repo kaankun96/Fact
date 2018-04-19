@@ -42,6 +42,16 @@
                 android:src="@drawable/logo"
                 android:visibility="visible"/>
 
+            <ImageView
+                android:id="@+id/imgBtnToolbarExit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+
+                android:src="@drawable/ic_green_exit"
+                android:visibility="visible"/>
+
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 </layout>

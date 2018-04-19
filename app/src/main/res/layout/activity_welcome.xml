@@ -33,16 +33,19 @@
             android:textSize="25dp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tvSlogan"
+        <com.daimajia.slider.library.SliderLayout
+            android:id="@+id/tvSlider"
             android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+        <com.daimajia.slider.library.Indicators.PagerIndicator
+            android:id="@+id/custom_indicator"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="@string/slogan"
-            android:textColor="@color/colorWhite"
-            android:textSize="25dp"
-            android:textStyle="italic" />
+            android:shadowColor="@color/colorWhite"/>
 
         <Button
             android:id="@+id/btnCreateAccount"

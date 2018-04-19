@@ -1,75 +1,77 @@
 package com.example.kaan.factapp.Adapter;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.kaan.factapp.Model.ReportModel;
 import com.example.kaan.factapp.Model.TotalEventModel;
 import com.example.kaan.factapp.R;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class TotalEventAdapter extends BaseAdapter {
+public class TotalEventAdapter extends RecyclerView.Adapter<TotalEventAdapter.ViewHolder> {
 
     private LayoutInflater layoutInflater;
-    private List<TotalEventModel> totalEventModels;
+    private ArrayList<TotalEventModel> totalEventModels;
 
-    public TotalEventAdapter(Context context, List<TotalEventModel> totalEventModels) {
+    public TotalEventAdapter(Context context, ArrayList<TotalEventModel> totalEventModels) {
         this.layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.totalEventModels = totalEventModels;
     }
 
     @Override
-    public int getCount() {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.prototype_all_row, parent, false);
+        return new ViewHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        final TotalEventModel totalEventModel = totalEventModels.get(position);
+
+        holder.tvIncidentName.setText(totalEventModel.getName());
+        holder.tvIncidentLocation.setText(totalEventModel.getLocation());
+        holder.tvIncidentInformers.setText(totalEventModel.getUserName()+" "+totalEventModel.getUserLastName());
+        holder.tvIncidentDate.setText(totalEventModel.getDateTimes());
+        holder.condition = totalEventModel.getResultIncident().toString();
+        Log.i("kaankaan", " " + holder.condition);
+        if (holder.condition.equals("YES") && holder.condition != null) {
+            holder.ivOkey.setVisibility(View.VISIBLE);
+            holder.ivClose.setVisibility(View.GONE);
+            holder.llBorder.setBackgroundResource(R.drawable.border_prototype_report);
+        } else if (holder.condition.equals("NO") && holder.condition != null) {
+            holder.ivClose.setVisibility(View.VISIBLE);
+            holder.ivOkey.setVisibility(View.GONE);
+            holder.llBorder.setBackgroundResource(R.drawable.border_prototype_red);
+        }
+    }
+
+
+    @Override
+    public int getItemCount() {
         return totalEventModels.size();
     }
 
-    @Override
-    public Object getItem(int position) {
-        return totalEventModels.get(position);
-    }
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        String condition;
 
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
+        TextView tvIncidentName = itemView.findViewById(R.id.tvIncidentName);
+        TextView tvIncidentLocation = itemView.findViewById(R.id.tvIncidentLocation);
+        TextView tvIncidentInformers = itemView.findViewById(R.id.tvIncidentInformers);
+        TextView tvIncidentDate = itemView.findViewById(R.id.tvIncidentDate);
+        ImageView ivOkey = itemView.findViewById(R.id.ivOkey);
+        ImageView ivClose = itemView.findViewById(R.id.ivClose);
+        LinearLayout llBorder = itemView.findViewById(R.id.llBorder);
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View row = convertView;
-        if (row == null)
-            row = layoutInflater.inflate(R.layout.prototype_report_row, null);
-
-        Boolean condition = null;
-
-        TextView tvIncidentName = row.findViewById(R.id.tvIncidentName);
-        TextView tvIncidentLocation = row.findViewById(R.id.tvIncidentLocation);
-        TextView tvIncidentInformer = row.findViewById(R.id.tvIncidentInformer);
-        TextView tvIncidentDate = row.findViewById(R.id.tvIncidentDate);
-        TextView ivOkey = row.findViewById(R.id.ivOkey);
-        TextView ivClose = row.findViewById(R.id.ivClose);
-
-
-        tvIncidentName.setText(totalEventModels.get(position).getIncidentName());
-        tvIncidentLocation.setText(totalEventModels.get(position).getIncidentLocation());
-        tvIncidentInformer.setText(totalEventModels.get(position).getIncidentInformer());
-        tvIncidentDate.setText(totalEventModels.get(position).getIncidentDate());
-        condition.equals(totalEventModels.get(position).getIncidentCondition());
-        if (!condition.equals(null)) {
-            if (condition == true) {
-                ivOkey.setVisibility(View.VISIBLE);
-                ivClose.setVisibility(View.GONE);
-            } else if (condition == false) {
-                ivClose.setVisibility(View.VISIBLE);
-                ivOkey.setVisibility(View.GONE);
-            }
+        public ViewHolder(View itemView) {
+            super(itemView);
         }
-
-
-        return row;
     }
 }

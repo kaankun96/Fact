@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RestControllerFactory {
 
-    public static final String BASE_URL = "http://10.0.2.2:8080/factApp/";
+    public static final String BASE_URL = "http://192.168.64.2/factApp/";
     private static RestControllerFactory instance = new RestControllerFactory();
     private static final int timeoutInterval = 30;
     private static Retrofit factAppService = null;
