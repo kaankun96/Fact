@@ -45,6 +45,9 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,Vie
         binding = DataBindingUtil.setContentView(this, R.layout.activity_maps);
         takeLocation();
         init();
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
 
     }
 
@@ -53,6 +56,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,Vie
     }
     private void getIncidentList() {
         showLoadingIndicator();
+        locationModel=new LocationModel();
         locationModel.setLocation(location);
         RestControllerFactory.getInstance().getRegisterFactory().closeListAPI(locationModel).enqueue(new Callback<ArrayList<TotalEventModel>>() {
             @Override
@@ -115,16 +119,6 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback,Vie
 
         }
 
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
     }
 
 

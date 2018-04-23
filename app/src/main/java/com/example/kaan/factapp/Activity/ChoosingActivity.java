@@ -3,6 +3,7 @@ package com.example.kaan.factapp.Activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
@@ -15,6 +16,8 @@ import com.example.kaan.factapp.databinding.ActivityChoosingBinding;
 import com.example.kaan.factapp.databinding.ToolbarBinding;
 
 import java.util.HashMap;
+
+import static com.example.kaan.factapp.FactApp.getClientPreferences;
 
 public class ChoosingActivity extends BaseActivity implements View.OnClickListener, BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
@@ -34,7 +37,8 @@ public class ChoosingActivity extends BaseActivity implements View.OnClickListen
         binding.contentChoosing.btnRoadWork.setOnClickListener(this);
         binding.contentChoosing.btnRobbery.setOnClickListener(this);
         binding.navView.setNavigationItemSelectedListener(this);
-
+        /*TextView tvUserName=(TextView) findViewById(R.id.tvUserName);
+        tvUserName.setText(getClientPreferences().getUser().getName() + getClientPreferences().getUser().getLastName());*/
         Bundle extras = getIntent().getExtras();
         userEmail = extras.getString("userEmail");
 

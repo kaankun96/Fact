@@ -5,14 +5,14 @@ import com.google.gson.annotations.SerializedName;
 public class UploadRequest {
     @SerializedName("dateTimes")
     private String dateTimes;
+    @SerializedName("name")
+    private String name;
     @SerializedName("image")
     private String url;
     @SerializedName("image2")
     private String url2;
     @SerializedName("image3")
     private String url3;
-    @SerializedName("name")
-    private String name;
     @SerializedName("location")
     private String location;
     @SerializedName("userEmail")

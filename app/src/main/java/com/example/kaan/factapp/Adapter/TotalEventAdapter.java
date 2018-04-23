@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.kaan.factapp.Dialog.DetailsDialog;
 import com.example.kaan.factapp.Model.TotalEventModel;
 import com.example.kaan.factapp.R;
 
@@ -21,8 +22,10 @@ public class TotalEventAdapter extends RecyclerView.Adapter<TotalEventAdapter.Vi
     private LayoutInflater layoutInflater;
     private ArrayList<TotalEventModel> totalEventModels;
     private String locationEqusals;
+    private Context context;
 
     public TotalEventAdapter(Context context, ArrayList<TotalEventModel> totalEventModels) {
+        this.context=context;
         this.layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.totalEventModels = totalEventModels;
     }
@@ -35,7 +38,7 @@ public class TotalEventAdapter extends RecyclerView.Adapter<TotalEventAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         final TotalEventModel totalEventModel = totalEventModels.get(position);
         holder.tvIncidentName.setText(totalEventModel.getName());
         holder.tvIncidentLocation.setText(totalEventModel.getLocation());
@@ -51,6 +54,15 @@ public class TotalEventAdapter extends RecyclerView.Adapter<TotalEventAdapter.Vi
             holder.ivClose.setVisibility(View.VISIBLE);
             holder.ivOkey.setVisibility(View.GONE);
             holder.llBorder.setBackgroundResource(R.drawable.border_prototype_red);
+            holder.llBorder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showDetailsDialog(totalEventModels.get(position));
+                    holder.ivOkey.setVisibility(View.VISIBLE);
+                    holder.ivClose.setVisibility(View.GONE);
+                    holder.llBorder.setBackgroundResource(R.drawable.border_prototype_report);
+                }
+            });
         }
     }
 
@@ -74,5 +86,9 @@ public class TotalEventAdapter extends RecyclerView.Adapter<TotalEventAdapter.Vi
         public ViewHolder(View itemView) {
             super(itemView);
         }
+    }
+    private void showDetailsDialog(TotalEventModel totalEventModel) {
+        DetailsDialog detailsDialog = new DetailsDialog(context,totalEventModel);
+        detailsDialog.show();
     }
 }

@@ -8,6 +8,7 @@ import android.widget.ListView;
 
 import com.example.kaan.factapp.Adapter.TotalEventAdapter;
 import com.example.kaan.factapp.Connection.RestControllerFactory;
+import com.example.kaan.factapp.Dialog.DetailsDialog;
 import com.example.kaan.factapp.Model.TotalEventModel;
 import com.example.kaan.factapp.R;
 import com.example.kaan.factapp.databinding.ToolbarBinding;
@@ -73,4 +74,5 @@ public class TotalEventActivity extends BaseActivity {
             }
         });
     }
+
 }

@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.example.kaan.factapp.Activity.ChoosingActivity;
 import com.example.kaan.factapp.Activity.LoginActivity;
+import com.example.kaan.factapp.Activity.MapsActivity;
 import com.example.kaan.factapp.Activity.ReportActivity;
 import com.example.kaan.factapp.Activity.ShareActivity;
 import com.example.kaan.factapp.Activity.SignActivity;
@@ -59,6 +60,10 @@ public class NavigationHelper {
     }
     public void startTotalEventActivityDirect(Context context){
         Intent intent = new Intent(context, TotalEventActivity.class);
+        startActivity(context, intent);
+    }
+    public void startMapsActivityDirect(Context context){
+        Intent intent = new Intent(context, MapsActivity.class);
         startActivity(context, intent);
     }
 }

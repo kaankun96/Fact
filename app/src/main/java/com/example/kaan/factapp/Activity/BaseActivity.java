@@ -20,6 +20,8 @@ import com.example.kaan.factapp.R;
 import com.example.kaan.factapp.Utils.ClientPreferences;
 import com.example.kaan.factapp.databinding.ToolbarBinding;
 
+import java.util.List;
+
 import static com.example.kaan.factapp.FactApp.getClientPreferences;
 
 
@@ -77,6 +79,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
                 toolbarBinding.imgBtnToolbarMenu.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         try {
                             final DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
                             if (drawer.isDrawerVisible(GravityCompat.START)) {
@@ -165,7 +168,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
 
                 break;
             case R.id.nav_near_incident:
-
+                NavigationHelper.getInstance().startMapsActivityDirect(BaseActivity.this);
                 break;
             case R.id.nav_all_incident:
                 NavigationHelper.getInstance().startTotalEventActivityDirect(BaseActivity.this);
